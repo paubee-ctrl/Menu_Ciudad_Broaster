@@ -370,9 +370,9 @@ button[type="submit"]:hover {
  
     /* --- TARJETAS --- */
     .plato-contenedor {
-        margin: 12px 10px;
+        margin: 12px 0px;
         padding: 16px 14px;
-        border-radius: 12px;
+        border-radius: 0px;
     }
  
     h2 {
@@ -397,6 +397,7 @@ button[type="submit"]:hover {
  
     .pequeña {
         width: 190px;
+        max-width: 100%;
     }
  
     /* --- BOTONES --- */
