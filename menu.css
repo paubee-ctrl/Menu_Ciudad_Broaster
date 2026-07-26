@@ -396,7 +396,7 @@ button[type="submit"]:hover {
     }
  
     .pequeña {
-        width: 190px;
+        width: 290px;
         max-width: 100%;
     }
  
@@ -443,9 +443,9 @@ button[type="submit"]:hover {
  
     /* --- FORMULARIO --- */
     .formulario {
-        margin: 12px 10px;
+        margin: 12px 0px;
         padding: 18px 14px;
-        border-radius: 14px;
+        border-radius: 0px;
     }
  
     .formulario h2 {
