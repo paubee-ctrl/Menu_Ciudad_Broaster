@@ -426,7 +426,7 @@ button[type="submit"]:hover {
     .prueba img,
     .pruebaal img {
         width: 90%;
-        max-width: 130px;
+        max-width: 200px;
         height: auto;
     }
  
