@@ -425,7 +425,7 @@ button[type="submit"]:hover {
        se limitan al ancho de su mitad */
     .prueba img,
     .pruebaal img {
-        width: 90%;
+        width: 100%;
         max-width: 130px;
         height: auto;
     }
