@@ -1,7 +1,7 @@
 
 
 function debounce(checkSlide, wait = 30) 
-{
+{    
     let timeout; // esta variable tiene el tiempo de wait
     
     return function () 
