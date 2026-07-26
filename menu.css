@@ -28,6 +28,8 @@ body {
             transparent 2px,
             transparent 40px
         );
+        width: fit-content;
+    
 }
 
 img {
@@ -43,7 +45,7 @@ img {
 
 .plato-contenedor {
     background-color: var(--blanco);
-    margin: 40px;
+    margin: 40px 0px;
     padding: 25px 30px;
     border-radius: 18px;
     border-left: 8px solid var(--rojo-principal);
@@ -370,7 +372,7 @@ button[type="submit"]:hover {
  
     /* --- TARJETAS --- */
     .plato-contenedor {
-        margin: 12px 8px;
+        margin: 12px 20px;
         padding: 16px 14px;
         border-radius: 16px;
     }
@@ -391,12 +393,12 @@ button[type="submit"]:hover {
  
     /* --- IMÁGENES --- */
     img {
-        width: 190px;
+        width: 290px;
         max-width: 100%;
     }
  
     .pequeña {
-        width: 290px;
+        width: 450px;
         max-width: 100%;
     }
  
@@ -423,27 +425,36 @@ button[type="submit"]:hover {
         padding: 8px 0px;
         overflow: hidden;
     }
+
+    .prueba {
+        margin-left: 20px;
+    }
+
+    .pruebaal {
+        margin-right: 20px;
+    }
  
     /* las imágenes dentro de prueba y pruebaal
        se limitan al ancho de su mitad */
     .prueba img,
     .pruebaal img {
         width: 100%;
-        max-width: 350px;
+        max-width: 450px;
         height: auto;
     }
  
     .slogan-left,
     .slogan-right {
-        font-size: 12px;
-        margin-top: 6px;
+        font-size: 32px;
+        margin-top: 9px;
+        margin-left: 5px;
         padding: 4px 6px;
         text-align: center;
     }
  
     /* --- FORMULARIO --- */
     .formulario {
-        margin: 12px 0px;
+        margin: 12px 20px;
         padding: 18px 14px;
         border-radius: 20px;
     }
