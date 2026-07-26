@@ -389,7 +389,7 @@ button[type="submit"]:hover {
  
     /* --- IMÁGENES --- */
     img {
-        width: 140px;
+        width: 190px;
         max-width: 100%;
     }
  
@@ -426,7 +426,7 @@ button[type="submit"]:hover {
     .prueba img,
     .pruebaal img {
         width: 100%;
-        max-width: 200px;
+        max-width: 350px;
         height: auto;
     }
  
