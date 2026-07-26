@@ -344,113 +344,119 @@ button[type="submit"]:hover {
     color: var(--rojo-oscuro);
 }
  
-
-@media (max-width: 600px) {
+/* ============================================================
+   RESPONSIVE MÓVIL — max-width: 480px
+   Subimos el breakpoint a 480px para cubrir más teléfonos.
+   ============================================================ */
+@media (max-width: 480px) {
  
-    /* --- HEADER / TÍTULO --- */
+    /* --- HEADER --- */
     .titulo {
-        padding: 14px 20px;       /* menos padding lateral */
-        flex-wrap: wrap;          /* si el logo no cabe, baja */
-        gap: 10px;
+        padding: 12px 16px;
+        gap: 8px;
     }
  
     h1 {
-        font-size: 24px;          /* de 45px → 24px para que quepa en el tlf */
+        font-size: 22px;
         letter-spacing: 0px;
     }
  
     .logo {
-        width: 80px;              /* de 150px → 80px */
+        width: 70px;
         margin-top: 0;
     }
  
-    /* --- TARJETAS DE PLATOS --- */
+    /* --- TARJETAS --- */
     .plato-contenedor {
-        margin: 16px 12px;        /* de 40px → 16px, menos espacio lateral */
-        padding: 18px 16px;       /* padding interior más ajustado */
+        margin: 12px 10px;
+        padding: 16px 14px;
         border-radius: 12px;
     }
  
     h2 {
-        font-size: 20px;          /* de 30px → 20px */
-        margin-top: 10px;
+        font-size: 19px;
+        margin-top: 8px;
     }
  
     p {
-        font-size: 13px;          /* de 15px → 13px, más legible en pantalla chica */
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.6;
     }
  
     strong {
-        font-size: 24px;          /* de 35px → 24px */
+        font-size: 22px;
     }
  
     /* --- IMÁGENES --- */
     img {
-        width: 160px;             /* de 100px → 160px (en móvil tienen más protagonismo) */
+        width: 140px;
+        max-width: 100%;
     }
  
     .pequeña {
-        width: 200px;             /* de 300px → 200px */
+        width: 160px;
     }
  
-    /* --- BOTÓN ORDENA TU COMBO --- */
+    /* --- BOTONES --- */
     button {
-        font-size: 14px;          /* de 18px → 14px */
-        padding: 10px 18px;       /* menos padding */
-        width: 100%;              /* ocupa todo el ancho — más fácil de tocar */
-        margin: 8px 0;
+        font-size: 14px;
+        padding: 10px 16px;
+        width: 100%;
+        margin: 6px 0;
     }
  
-    /* --- SECCIÓN PRUEBA-DOS (slogan + nestea) --- */
+    /* --- SECCIÓN NESTEA: siguen lado a lado --- */
     .prueba-dos {
-        flex-direction: row;      /* siguen lado a lado — las dos imágenes juntas */
-        overflow: hidden;         /* evita que se desborden */
+        flex-direction: row;
+        overflow: hidden;
     }
  
     .prueba,
     .pruebaal {
-        width: 50%;               /* cada una ocupa exactamente la mitad de la pantalla */
-        flex-shrink: 1;           /* pueden achicarse si hace falta */
-        justify-content: center;
+        flex: 1;
+        flex-direction: column;
         align-items: center;
-        padding: 0px;             /* menos padding para ganar espacio */
-        flex-direction: column;   /* imagen arriba, texto abajo */
+        justify-content: center;
+        padding: 8px 4px;
+        overflow: hidden;
     }
  
+    /* las imágenes dentro de prueba y pruebaal
+       se limitan al ancho de su mitad */
     .prueba img,
     .pruebaal img {
-        width: 100%;              /* la imagen ocupa el ancho de su mitad */
-        max-width: 390px;
+        width: 90%;
+        max-width: 130px;
+        height: auto;
     }
  
     .slogan-left,
     .slogan-right {
-        font-size: 20px;          /* de 25px → 13px para que quepa en media pantalla */
-        margin-top: 16px;
-        padding: 0px;
+        font-size: 12px;
+        margin-top: 6px;
+        padding: 4px 6px;
         text-align: center;
     }
  
     /* --- FORMULARIO --- */
     .formulario {
-        margin: 16px 12px;        /* de 40px → 16px */
-        padding: 20px 16px;       /* de 35px 40px → más ajustado */
+        margin: 12px 10px;
+        padding: 18px 14px;
         border-radius: 14px;
     }
  
     .formulario h2 {
-        font-size: 20px;
-        margin-bottom: 12px;
+        font-size: 19px;
+        margin-bottom: 10px;
     }
  
     .formulario label {
-        font-size: 14px;          /* de 18px → 14px */
+        font-size: 14px;
     }
  
     .formulario input,
     .formulario select {
-        font-size: 16px;          /* mínimo 16px en móvil para evitar zoom automático en iOS */
+        font-size: 16px; /* mínimo 16px — evita zoom automático en iOS */
         padding: 10px 12px;
     }
  
@@ -459,31 +465,31 @@ button[type="submit"]:hover {
     }
  
     .bloquePedido {
-        padding: 14px;
+        padding: 12px;
     }
  
     .btnEliminar {
         font-size: 13px;
-        padding: 8px 14px;
+        padding: 8px 12px;
         width: 100%;
     }
  
     #btnAgregar {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
         font-size: 20px;
     }
  
     button[type="submit"] {
-        font-size: 16px;
-        padding: 14px 24px;
+        font-size: 15px;
+        padding: 13px 20px;
         width: 100%;
     }
  
-    /* --- LOGO-2 / SLOGAN FINAL --- */
+    /* --- SLOGAN FINAL --- */
     .logo-2 {
-        font-size: 28px;          /* de 42px → 28px */
-        margin-top: 20px;
-        padding: 0 16px;
+        font-size: 26px;
+        margin-top: 16px;
+        padding: 0 14px;
     }
 }
