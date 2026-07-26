@@ -361,12 +361,12 @@ button[type="submit"]:hover {
     }
  
     h1 {
-        font-size: 22px;
+        font-size: 40px;
         letter-spacing: 0px;
     }
  
     .logo {
-        width: 70px;
+        width: 100px;
         margin-top: 0;
     }
  
@@ -378,17 +378,19 @@ button[type="submit"]:hover {
     }
  
     h2 {
-        font-size: 19px;
+        font-size: 40px;
         margin-top: 8px;
+        font-style: normal;
+        color: var(--rojo-principal);
     }
  
     p {
-        font-size: 13px;
+        font-size: 25px;
         line-height: 1.6;
     }
  
     strong {
-        font-size: 22px;
+        font-size: 45px;
     }
  
     /* --- IMÁGENES --- */
@@ -404,7 +406,7 @@ button[type="submit"]:hover {
  
     /* --- BOTONES --- */
     button {
-        font-size: 14px;
+        font-size: 24px;
         padding: 10px 16px;
         width: 100%;
         margin: 6px 0;
