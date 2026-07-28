@@ -44,14 +44,54 @@ window.addEventListener('scroll', debounce(checkSlide))
 const contenedor = document.getElementById("contenedorPedidos")
 const btnAgregar = document.getElementById("btnAgregar");
 
+
 btnAgregar.addEventListener("click", function() {
 
-  const nuevoBloque = contenedor.querySelector(".bloquePedido").cloneNode(true);
+  const elbloque = contenedor.querySelector(".bloquePedido")
+  if(elbloque === null)
+  {
+     contenedor.innerHTML += `<div class="bloquePedido">
+        <p>
+          <label>Pedido a Realizar: </label>
+          <select class="combos" name="combos">
+            <option value="Combo Hamburguesa">Combo Hamburguesa</option>
+            <option value="Combo Club House">Combo Club House</option>
+            <option value="Combo Kids">Combo Kids</option>
+            <option value="Combo Fit">Combo Fit</option>
+            <option value="Combo Green & Crispy">Combo Green & Crispy</option>
+            <option value="Combo Crujiente">Combo Crujiente</option>
+            <option value="Combo Pana">Combo Pana</option>
+            <option value="Combo Milanesa">Combo Milanesa</option>
+            <option value="Combo Cordon Bleu">Combo Cordon Bleu</option>
+            <option value="Combo Individual">Combo Individual</option>
+            <option value="Combo 2 Piezas">Combo 2 Piezas</option>
+            <option value="Combo 3 Piezas">Combo 3 Piezas</option>
+            <option value="Combo 4 Piezas">Combo 4 Piezas</option>
+            <option value="Combo 5 Piezas">Combo 5 Piezas</option>
+            <option value="Combo Familiar Pequeño">Combo Familiar Pequeño</option>
+            <option value="Combo Familiar Grande">Combo Familiar Grande</option>
+          </select>
+        </p>
+        <p>
+          <label>Indica Cuántos: </label>
+          <input type="number" class="cantidad" min="1" max="10" step="1" value="1">
+        </p>
+         <button type="button" class="btnEliminar">Eliminar Pedido</button>
+
+      </div>`
+  }
+
+  else
+  {
+    const nuevoBloque = contenedor.querySelector(".bloquePedido").cloneNode(true);
 
     nuevoBloque.querySelector(".cantidad").value = 1;
     nuevoBloque.querySelector(".combos").selectedIndex = 0;
 
     contenedor.appendChild(nuevoBloque)
+  }
+
+
 })
 
 

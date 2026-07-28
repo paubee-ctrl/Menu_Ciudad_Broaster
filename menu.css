@@ -65,7 +65,7 @@ button {
     border: 2px solid var(--rojo-principal);
     color: var(--blanco);
     font-size: 18px;
-    transition: all 0.3s ease;
+    transition: all 0.05s ease;
     margin: 5px;
 }
  
@@ -262,7 +262,7 @@ strong {
     color: var(--negro-suave);
     font-size: 18px;
     outline: none;
-    transition: all 0.25s ease;
+    transition: all 0.05s ease;
 }
  
 .formulario input:focus,
