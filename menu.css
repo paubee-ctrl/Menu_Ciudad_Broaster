@@ -236,12 +236,7 @@ button:focus-visible {
 
 /* =========================================================
    BANDA PROMOCIONAL
-   ========================================================= */
-/* =========================================================
-   BANDA PROMOCIONAL
-   Las dos imágenes se tocan en el centro y comparten la misma
-   altura, así se leen como una sola pieza aunque sean 2 archivos.
-   ========================================================= */
+ */
 
 .prueba-dos {
     display: flex;
@@ -501,10 +496,25 @@ button[type="submit"] {
         padding: 36px 40px 44px;
     }
 
+    
     .prueba,
     .pruebaal {
-        padding: 28px 24px;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        padding-top: 30px;
     }
+
+    .prueba {
+        justify-content: flex-start;
+        padding-left: 40px;
+    }
+
+    .pruebaal {
+        justify-content: flex-start;
+        padding-right: 40px;
+    }
+
 
     /* En pantalla ancha el desplazamiento lateral puede ser más marcado */
     .left-aling.slide-in { transform: translateX(-150px); }
