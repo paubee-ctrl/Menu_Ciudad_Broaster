@@ -292,22 +292,14 @@ button:focus-visible {
     color: var(--blanco-hueso);
 }
 
-/* Altura idéntica en las dos = borde continuo donde se juntan */
+/* Las dos imagenes son verticales y estrechas (474x819 y 499x691).
+   Con la altura fijada, su ancho real es pequeno: nunca se desbordan.
+   Misma altura + width auto = se tocan y comparten linea base. */
 .grande {
-    height: clamp(110px, 30vw, 170px);
-    width: 100%;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-/* object-fit centra el dibujo dentro de la caja y deja fondo a los lados.
-   object-position lo empuja al borde interior para que se toquen. */
-.prueba .grande {
-    object-position: right bottom;
-}
-
-.pruebaal .grande {
-    object-position: left bottom;
+    height: clamp(120px, 32vw, 190px);
+    width: auto;
+    max-width: none;
+    flex-shrink: 0;
 }
 
 /* =========================================================
@@ -507,7 +499,7 @@ button[type="submit"] {
         padding: 36px 40px 44px;
     }
 
-    /* En pantalla ancha vuelve a fila: texto al lado, imagen al centro */
+    /* En pantalla ancha vuelve a fila: texto al lado, imagen pegada al centro */
     .prueba,
     .pruebaal {
         flex-direction: row;
@@ -517,22 +509,18 @@ button[type="submit"] {
     }
 
     .prueba {
+        justify-content: flex-end;
         padding-left: 40px;
     }
 
     .pruebaal {
+        justify-content: flex-start;
         padding-right: 40px;
     }
 
     .slogan-left,
     .slogan-right {
         align-self: center;
-        flex: 0 1 auto;
-    }
-
-    .grande {
-        flex: 1 1 0;
-        min-width: 0;
     }
 
     /* En pantalla ancha el desplazamiento lateral puede ser más marcado */
