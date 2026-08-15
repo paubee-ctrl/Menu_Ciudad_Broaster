@@ -296,10 +296,10 @@ button:focus-visible {
 
 /* Altura idéntica en las dos = borde continuo donde se juntan */
 .grande {
-    height: clamp(110px, 30vw, 170px);
-    width: auto;
-    max-width: none;
-    flex-shrink: 0;
+        height: clamp(110px, 30vw, 170px);
+        width: 100%;
+        max-width: 100%;
+        object-fit: contain;
 }
 
 /* =========================================================
