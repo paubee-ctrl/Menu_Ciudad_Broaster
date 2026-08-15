@@ -43,6 +43,7 @@ body {
     font-family: 'League Spartan', sans-serif;
     font-weight: 600;
     font-size: 1rem;
+    width: fit-content;
     line-height: 1.5;
     color: var(--gris-texto);
     overflow-x: hidden;           /* las animaciones laterales no generan scroll horizontal */
@@ -236,36 +237,55 @@ button:focus-visible {
 /* =========================================================
    BANDA PROMOCIONAL
    ========================================================= */
+/* =========================================================
+   BANDA PROMOCIONAL
+   Las dos imágenes se tocan en el centro y comparten la misma
+   altura, así se leen como una sola pieza aunque sean 2 archivos.
+   ========================================================= */
 
 .prueba-dos {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;          /* nunca se apilan: deben quedar pegadas */
+    align-items: stretch;
+    overflow: hidden;
 }
 
 .prueba,
 .pruebaal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex: 1 1 320px;
+    flex: 1 1 50%;
+    width: 50%;
     min-width: 0;
-    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;     /* en teléfono: texto arriba, imagen abajo */
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 18px;
+    padding-bottom: 0;          /* las imágenes se apoyan en la base */
 }
 
 .prueba {
     background-color: var(--blanco-hueso);
+    align-items: flex-end;      /* la imagen se pega al borde interior derecho */
+    padding-left: 12px;
+    padding-right: 0;
+    text-align: right;
 }
 
 .pruebaal {
     background-color: var(--rojo-brillante);
+    align-items: flex-start;    /* la imagen se pega al borde interior izquierdo */
+    padding-right: 12px;
+    padding-left: 0;
+    text-align: left;
 }
 
 .slogan-left,
 .slogan-right {
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    align-self: stretch;
     font-family: 'MaryKate', cursive;
-    line-height: 1.2;
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    line-height: 1.15;
+    overflow-wrap: break-word;
 }
 
 .slogan-left {
@@ -276,8 +296,11 @@ button:focus-visible {
     color: var(--blanco-hueso);
 }
 
+/* Altura idéntica en las dos = borde continuo donde se juntan */
 .grande {
-    width: clamp(90px, 24vw, 130px);
+    height: clamp(110px, 30vw, 170px);
+    width: auto;
+    max-width: none;
     flex-shrink: 0;
 }
 
@@ -487,3 +510,14 @@ button[type="submit"] {
     .left-aling.slide-in { transform: translateX(-150px); }
     .right-aling.slide-in { transform: translateX(150px); }
 }
+
+/*<article class="prueba-dos">
+   <div class="prueba">
+      <strong class="slogan-left">DISFRUTA LA MEJOR COMBINACION</strong>
+      <img src="imagenes/comboindividual (1).png" class="left-aling slide-in grande" alt="Bandeja individual de pollo broaster">
+   </div>
+   <div class="pruebaal">
+      <img src="imagenes/nestea.png" class="right-aling slide-in grande" alt="Nestea">
+      <strong class="slogan-right">NESTEA CON CIUDAD BROASTER</strong>
+   </div>
+</article>*/
