@@ -37,6 +37,7 @@ html {
     font-size: 100%;              /* respeta el tamaño de letra del sistema */
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    width: fit-content;
 }
 
 body {
@@ -101,7 +102,7 @@ h1:hover {
 
 .plato-contenedor {
     background-color: var(--blanco);
-    margin: 18px 14px;
+    margin: 0px;
     padding: 22px 20px 26px;
     border-radius: 18px;
     border-left: 8px solid var(--rojo-principal);
@@ -243,6 +244,7 @@ button:focus-visible {
     flex-wrap: nowrap;          /* nunca se apilan: deben quedar pegadas */
     align-items: stretch;
     overflow: hidden;
+    margin: 0px;
 }
 
 .prueba,
@@ -521,13 +523,3 @@ button[type="submit"] {
     .right-aling.slide-in { transform: translateX(150px); }
 }
 
-/*<article class="prueba-dos">
-   <div class="prueba">
-      <strong class="slogan-left">DISFRUTA LA MEJOR COMBINACION</strong>
-      <img src="imagenes/comboindividual (1).png" class="left-aling slide-in grande" alt="Bandeja individual de pollo broaster">
-   </div>
-   <div class="pruebaal">
-      <img src="imagenes/nestea.png" class="right-aling slide-in grande" alt="Nestea">
-      <strong class="slogan-right">NESTEA CON CIUDAD BROASTER</strong>
-   </div>
-</article>*/
