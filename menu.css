@@ -43,8 +43,6 @@ body {
     font-family: 'League Spartan', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    width: 100%;      
-    max-width: 100vw;     
     line-height: 1.5;
     color: var(--gris-texto);
     overflow-x: hidden;           /* las animaciones laterales no generan scroll horizontal */
@@ -237,14 +235,15 @@ button:focus-visible {
 
 /* =========================================================
    BANDA PROMOCIONAL
- */
+   Las dos imágenes se tocan en el centro y comparten la misma
+   altura, así se leen como una sola pieza aunque sean 2 archivos.
+   ========================================================= */
 
 .prueba-dos {
     display: flex;
     flex-wrap: nowrap;          /* nunca se apilan: deben quedar pegadas */
     align-items: stretch;
     overflow: hidden;
-    margin: 0px;
 }
 
 .prueba,
@@ -282,7 +281,6 @@ button:focus-visible {
     font-family: 'MaryKate', cursive;
     font-size: clamp(1rem, 4vw, 1.6rem);
     line-height: 1.15;
-    margin: 10px;
     overflow-wrap: break-word;
 }
 
@@ -296,10 +294,20 @@ button:focus-visible {
 
 /* Altura idéntica en las dos = borde continuo donde se juntan */
 .grande {
-        height: clamp(110px, 30vw, 170px);
-        width: 100%;
-        max-width: 100%;
-        object-fit: contain;
+    height: clamp(110px, 30vw, 170px);
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* object-fit centra el dibujo dentro de la caja y deja fondo a los lados.
+   object-position lo empuja al borde interior para que se toquen. */
+.prueba .grande {
+    object-position: right bottom;
+}
+
+.pruebaal .grande {
+    object-position: left bottom;
 }
 
 /* =========================================================
@@ -499,28 +507,35 @@ button[type="submit"] {
         padding: 36px 40px 44px;
     }
 
-    
+    /* En pantalla ancha vuelve a fila: texto al lado, imagen al centro */
     .prueba,
     .pruebaal {
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
         gap: 24px;
         padding-top: 30px;
     }
 
     .prueba {
-        justify-content: flex-start;
         padding-left: 40px;
     }
 
     .pruebaal {
-        justify-content: flex-start;
         padding-right: 40px;
     }
 
+    .slogan-left,
+    .slogan-right {
+        align-self: center;
+        flex: 0 1 auto;
+    }
+
+    .grande {
+        flex: 1 1 0;
+        min-width: 0;
+    }
 
     /* En pantalla ancha el desplazamiento lateral puede ser más marcado */
     .left-aling.slide-in { transform: translateX(-150px); }
     .right-aling.slide-in { transform: translateX(150px); }
 }
-
