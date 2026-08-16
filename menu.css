@@ -558,9 +558,8 @@ button[type="submit"] {
      .left-aling.slide-in:not(.active) {
         transform: translateX(-60px);
     }
- 
 
-    .right-aling.slide-in {
+    .right-aling.slide-in:not(.active) {
         transform: translateX(60px);
     }
 
