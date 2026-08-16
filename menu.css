@@ -9,9 +9,11 @@
     --sombra-suave: rgba(0, 0, 0, 0.12);
 }
 
-html {
-
+html, body {
+  margin: 0;
+  padding: 0;
 }
+
  
 * {
     margin: 0;
@@ -32,7 +34,6 @@ body {
             transparent 2px,
             transparent 40px
         );
-        
 }
 
 img {
@@ -53,7 +54,6 @@ img {
     border-radius: 18px;
     border-left: 8px solid var(--rojo-principal);
     box-shadow: 0 6px 20px var(--sombra-suave);
-    width: 100%;
 }
 
 .plato-contenedor:hover {
@@ -560,10 +560,10 @@ button[type="submit"] {
         max-width: none;
     }
 
+    }
 
     /* --- Cierre --- */
     .logo-2 {
         font-size: 32px;
         margin-top: 20px;
     }
-}
