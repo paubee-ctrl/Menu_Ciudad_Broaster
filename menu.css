@@ -555,9 +555,10 @@ button[type="submit"] {
     }
 
     /* --- Animación más corta para que no se salga --- */
-    .left-aling.slide-in {
+     .left-aling.slide-in:not(.active) {
         transform: translateX(-60px);
     }
+ 
 
     .right-aling.slide-in {
         transform: translateX(60px);
