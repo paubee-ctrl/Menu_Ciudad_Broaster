@@ -1,113 +1,136 @@
 
-/* =========================================================
-   CIUDAD BROASTER — index.js
-   ========================================================= */
 
-/* ---------- 1. Animación de entrada de las imágenes ---------- */
-
-function debounce(fn, wait = 30) {
-  let timeout;
-  return function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(fn, wait);
-  };
+function debounce(checkSlide, wait = 30) 
+{
+    let timeout; // esta variable tiene el tiempo de wait
+    
+    return function () 
+    {
+        clearTimeout(timeout) // en caso de que haya un tiempo, se reinicia el código
+         // se restaura desde 0
+        timeout = setTimeout(checkSlide, wait)
+    }
 }
 
 const sliderImages = document.querySelectorAll('.slide-in');
 
-function checkSlide() {
-  sliderImages.forEach(sliderImage => {
-    // Mitad de la imagen
-    const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.offsetHeight / 2;
-    // Borde inferior de la imagen
-    const imageBottom = sliderImage.offsetTop + sliderImage.offsetHeight;
-    const isHalfShown = slideInAt > sliderImage.offsetTop;
-    const isNotScrolledPast = window.scrollY < imageBottom;
-
-    if (isHalfShown && isNotScrolledPast) {
-      sliderImage.classList.add('active');
-    } else {
-      sliderImage.classList.remove('active');
+ function checkSlide() {
+ 
+      sliderImages.forEach(sliderImage => {
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) 
+          sliderImage.classList.add('active');
+        
+        else 
+        {
+          sliderImage.classList.remove('active');
+        }
+      });
     }
-  });
-}
 
-window.addEventListener('scroll', debounce(checkSlide));
-window.addEventListener('resize', debounce(checkSlide));
-// Importante: sin esto, las imágenes visibles al cargar se quedan invisibles
-// hasta que el usuario hace scroll.
-window.addEventListener('load', checkSlide);
-checkSlide();
+// window.scrollY = 500 (has bajado 500 píxeles)
+//window.innerHeight = 800 (tu ventana mide 800 píxeles)
+//sliderImage.offsetTop = 1000 (la imagen empieza a los 1000 píxeles)
+//sliderImage.height = 400 (la imagen mide 400 píxeles)
 
 
-/* ---------- 2. Bloques de pedido ---------- */
+window.addEventListener('scroll', debounce(checkSlide))
 
-const contenedor = document.getElementById('contenedorPedidos');
-const btnAgregar = document.getElementById('btnAgregar');
+const contenedor = document.getElementById("contenedorPedidos")
+const btnAgregar = document.getElementById("btnAgregar");
 
-// Una sola fuente de verdad: el bloque que ya está en el HTML.
-// Así no hay que mantener la lista de platos en dos sitios.
-const plantillaBloque = contenedor.querySelector('.bloquePedido').cloneNode(true);
+btnAgregar.addEventListener("click", function() {
 
-function bloqueLimpio() {
-  const nuevo = plantillaBloque.cloneNode(true);
-  nuevo.querySelector('.cantidad').value = 1;
-  nuevo.querySelector('.combos').selectedIndex = 0;
-  return nuevo;
-}
+  const elbloque = contenedor.querySelector(".bloquePedido")
+  if(elbloque === null)
+  {
+     contenedor.innerHTML += `<div class="bloquePedido">
+        <p>
+          <label>Pedido a Realizar: </label>
+          <select class="combos" name="combos">
+            <option value="Combo Hamburguesa">Combo Hamburguesa</option>
+            <option value="Combo Club House">Combo Club House</option>
+            <option value="Combo Kids">Combo Kids</option>
+            <option value="Combo Fit">Combo Fit</option>
+            <option value="Combo Green & Crispy">Combo Green & Crispy</option>
+            <option value="Combo Crujiente">Combo Crujiente</option>
+            <option value="Combo Pana">Combo Pana</option>
+            <option value="Combo Milanesa">Combo Milanesa</option>
+            <option value="Combo Cordon Bleu">Combo Cordon Bleu</option>
+            <option value="Combo Individual">Combo Individual</option>
+            <option value="Combo 2 Piezas">Combo 2 Piezas</option>
+            <option value="Combo 3 Piezas">Combo 3 Piezas</option>
+            <option value="Combo 4 Piezas">Combo 4 Piezas</option>
+            <option value="Combo 5 Piezas">Combo 5 Piezas</option>
+            <option value="Combo Familiar Pequeño">Combo Familiar Pequeño</option>
+            <option value="Combo Familiar Grande">Combo Familiar Grande</option>
+          </select>
+        </p>
+        <p>
+          <label>Indica Cuántos: </label>
+          <input type="number" class="cantidad" min="1" max="10" step="1" value="1">
+        </p>
+         <button type="button" class="btnEliminar">Eliminar Pedido</button>
 
-// El botón de eliminar solo tiene sentido si hay más de un pedido.
-function actualizarBotonesEliminar() {
-  const bloques = contenedor.querySelectorAll('.bloquePedido');
-  bloques.forEach(bloque => {
-    bloque.querySelector('.btnEliminar').hidden = bloques.length === 1;
-  });
-}
+      </div>`
+  }
 
-btnAgregar.addEventListener('click', function () {
-  contenedor.appendChild(bloqueLimpio());
-  actualizarBotonesEliminar();
+  else
+  {
+    const nuevoBloque = contenedor.querySelector(".bloquePedido").cloneNode(true);
+
+    nuevoBloque.querySelector(".cantidad").value = 1;
+    nuevoBloque.querySelector(".combos").selectedIndex = 0;
+
+    contenedor.appendChild(nuevoBloque)
+  }
+
+
+})
+
+
+contenedor.addEventListener("click", function (e) 
+{
+  // Verificamos si lo que clickearon tiene la clase "btnEliminar"
+  if(e.target.classList.contains("btnEliminar")) 
+  { /// el boton que acabo de tocar tiene la clase btnEliminar? 
+    const bloque = e.target.closest(".bloquePedido"); // yo o alguno de mis padres tiene está clase? busca desde mi hasta arriba
+    bloque.remove(); // si la tiene eliminala. 
+  }
 });
 
-contenedor.addEventListener('click', function (e) {
-  if (!e.target.classList.contains('btnEliminar')) return;
-  e.target.closest('.bloquePedido').remove();
-  actualizarBotonesEliminar();
-});
-
-actualizarBotonesEliminar();
+const formulario = document.getElementById("miFormulario");
 
 
-/* ---------- 3. Envío por WhatsApp ---------- */
-
-const NUMERO_WHATSAPP = '584147436059';
-const formulario = document.getElementById('formPedido');
-
-formulario.addEventListener('submit', function (e) {
+formulario.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const nombre = document.getElementById('PrimerNombre').value.trim();
-  const direccion = document.getElementById('DireccionEntrega').value.trim();
-  const telefono = document.getElementById('telefonoContacto').value.trim();
+  const nombre = document.getElementById("PrimerNombre").value;
+  const direccion = document.getElementById("DirecciónEntrega").value;
+  const telefono = document.getElementById("telefonoContacto").value;
 
-  const lineas = [];
-  document.querySelectorAll('.bloquePedido').forEach((bloque, i) => {
-    const plato = bloque.querySelector('.combos').value;
-    const cantidad = bloque.querySelector('.cantidad').value;
-    lineas.push(`Pedido ${i + 1}: ${cantidad} x ${plato}`);
+  const bloques = document.querySelectorAll(".bloquePedido");
+  let listaPedidos = "";
+
+  bloques.forEach((bloque, index) => {
+    const combo = bloque.querySelector(".combos").value;
+    const cantidad = bloque.querySelector(".cantidad").value;
+    listaPedidos =  listaPedidos + `Pedido ${index + 1}: ${cantidad} x ${combo}%0A`;
   });
 
-  const mensaje =
-    '¡Hola! Me gustaría ordenar lo siguiente:\n' +
-    `Nombre: ${nombre}\n` +
-    `Dirección: ${direccion}\n` +
-    `Teléfono: ${telefono}\n` +
-    lineas.join('\n');
+  const texto =
+    `¡Hola! Me gustaría ordenar lo siguiente:%0A` +
+    `Nombre: ${nombre}%0A` +
+    `Dirección: ${direccion}%0A` +
+    `Teléfono: ${telefono}%0A` +
+    listaPedidos;
 
-  // encodeURIComponent es obligatorio: sin esto, un plato con "&"
-  // (Green & Crispy) corta el mensaje a la mitad.
-  window.open(
-    `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`,
-    '_blank'
-  );
+  const numeroWhatsApp = "584147436059"; 
+  const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+  window.open(url, "_blank");
 });
