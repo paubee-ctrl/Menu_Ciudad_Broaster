@@ -15,31 +15,27 @@ function debounce(checkSlide, wait = 30)
 const sliderImages = document.querySelectorAll('.slide-in');
 
  function checkSlide() {
- 
-      sliderImages.forEach(sliderImage => {
-        // half way through the image
-        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
-        // bottom of the image
-        const imageBottom = sliderImage.offsetTop + sliderImage.height;
-        const isHalfShown = slideInAt > sliderImage.offsetTop;
-        const isNotScrolledPast = window.scrollY < imageBottom;
-        if (isHalfShown && isNotScrolledPast) 
-          sliderImage.classList.add('active');
-        
-        else 
-        {
-          sliderImage.classList.remove('active');
-        }
-      });
-    }
+    sliderImages.forEach(sliderImage => {
+        const caja = sliderImage.getBoundingClientRect();
 
-// window.scrollY = 500 (has bajado 500 píxeles)
-//window.innerHeight = 800 (tu ventana mide 800 píxeles)
-//sliderImage.offsetTop = 1000 (la imagen empieza a los 1000 píxeles)
-//sliderImage.height = 400 (la imagen mide 400 píxeles)
+        // La mitad de la imagen ya entró por abajo de la pantalla
+        const yaEntro = caja.top + caja.height / 2 < window.innerHeight;
+        // Todavía no salió por arriba
+        const noSalio = caja.bottom > 0;
+
+        if (yaEntro && noSalio) {
+            sliderImage.classList.add('active');
+        } else {
+            sliderImage.classList.remove('active');
+        }
+    });
+}
+
 
 
 window.addEventListener('scroll', debounce(checkSlide))
+window.addEventListener('resize', debounce(checkSlide))   // nueva
+window.addEventListener('load', checkSlide)               // nueva
 
 const contenedor = document.getElementById("contenedorPedidos")
 const btnAgregar = document.getElementById("btnAgregar");
