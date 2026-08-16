@@ -8,6 +8,10 @@
     --sombra-roja: rgba(200, 16, 46, 0.25);
     --sombra-suave: rgba(0, 0, 0, 0.12);
 }
+
+html {
+
+}
  
 * {
     margin: 0;
@@ -28,6 +32,7 @@ body {
             transparent 2px,
             transparent 40px
         );
+        
 }
 
 img {
@@ -48,6 +53,7 @@ img {
     border-radius: 18px;
     border-left: 8px solid var(--rojo-principal);
     box-shadow: 0 6px 20px var(--sombra-suave);
+    width: 100%;
 }
 
 .plato-contenedor:hover {
