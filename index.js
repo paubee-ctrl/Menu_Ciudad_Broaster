@@ -17,10 +17,7 @@ const sliderImages = document.querySelectorAll('.slide-in');
  function checkSlide() {
     sliderImages.forEach(sliderImage => {
         const caja = sliderImage.getBoundingClientRect();
-
-        // La mitad de la imagen ya entró por abajo de la pantalla
         const yaEntro = caja.top + caja.height / 2 < window.innerHeight;
-        // Todavía no salió por arriba
         const noSalio = caja.bottom > 0;
 
         if (yaEntro && noSalio) {
@@ -32,10 +29,10 @@ const sliderImages = document.querySelectorAll('.slide-in');
 }
 
 
-
 window.addEventListener('scroll', debounce(checkSlide))
 window.addEventListener('resize', debounce(checkSlide))   // nueva
-window.addEventListener('load', checkSlide)               // nueva
+window.addEventListener('load', checkSlide)      
+        // nueva
 
 const contenedor = document.getElementById("contenedorPedidos")
 const btnAgregar = document.getElementById("btnAgregar");
@@ -107,7 +104,7 @@ formulario.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const nombre = document.getElementById("PrimerNombre").value;
-  const direccion = document.getElementById("DirecciónEntrega").value;
+const direccion = document.getElementById("DireccionEntrega").value;
   const telefono = document.getElementById("telefonoContacto").value;
 
   const bloques = document.querySelectorAll(".bloquePedido");

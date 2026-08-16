@@ -554,14 +554,6 @@ button[type="submit"] {
         max-width: none;
     }
 
-    /* --- Animación más corta para que no se salga --- */
-     .left-aling.slide-in:not(.active) {
-        transform: translateX(-60px);
-    }
-
-    .right-aling.slide-in:not(.active) {
-        transform: translateX(60px);
-    }
 
     /* --- Cierre --- */
     .logo-2 {
